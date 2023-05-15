@@ -1,12 +1,13 @@
 const app = require('express')();
 const fs = require('fs');
 const hls = require('hls-server');
+const port =process.env.PORT ? process.env.PORT : 3000
 
 app.get('/', (req, res) => {
     return res.status(200).sendFile(`${__dirname}/client.html`);
 });
 
-const server = app.listen(3000);
+const server = app.listen(port);
 
 new hls(server, {
     provider: {
